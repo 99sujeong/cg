@@ -8,7 +8,7 @@
 #include <tchar.h>
 #include <windows.h>
 #include <mmsystem.h>
-#include <GL\gl.h>      // GL\ Æú´õ ¼öÁ¤
+#include <GL\gl.h>      // GL\ í´ë” ìˆ˜ì •
 #include <GL\glaux.h>
 #include "particlesystem.h"
 
@@ -18,15 +18,15 @@
 
 // For convenience, this project ships with its own "glext.h" extension header 
 // file. If you have trouble running this sample, it may be that this "glext.h" 
-// file is defining something that your hardware doesn’t actually support. 
+// file is defining something that your hardware doesnÂ’t actually support. 
 // Try recompiling the sample using your own local, vendor-specific "glext.h" 
 // header file.
 
-#include "glext.h"   // glext.h ±âº» Ç×¸ñ¿¡ Ãß°¡
-// gl.h¿¡ µé¾î°¡Áö ¸øÇÏ´Âµ¥ graphics card È¸»ç¿¡¼­ Ãß°¡·Î ±â´ÉÀ» ´õ È®ÀåÇßÀ»¶§´Â glext.h ¿¡ ´ã¾Æ¼­ ¹èÆ÷
-// ´Ù¿î·Îµå : https://ko.osdn.net/projects/sfnet_apiary-db/downloads/Windows/common/GL/glext.h/
+#include "glext.h"   // glext.h ê¸°ë³¸ í•­ëª©ì— ì¶”ê°€
+// gl.hì— ë“¤ì–´ê°€ì§€ ëª»í•˜ëŠ”ë° graphics card íšŒì‚¬ì—ì„œ ì¶”ê°€ë¡œ ê¸°ëŠ¥ì„ ë” í™•ì¥í–ˆì„ë•ŒëŠ” glext.h ì— ë‹´ì•„ì„œ ë°°í¬
+// ë‹¤ìš´ë¡œë“œ : https://ko.osdn.net/projects/sfnet_apiary-db/downloads/Windows/common/GL/glext.h/
 
-// ¼Ó¼º -> C/C++ -> ÀüÃ³¸®±â -> ÀüÃ³¸®±â Á¤ÀÇ -> _CRT_SECURE_NO_WARNINGS Ãß°¡
+// ì†ì„± -> C/C++ -> ì „ì²˜ë¦¬ê¸° -> ì „ì²˜ë¦¬ê¸° ì •ì˜ -> _CRT_SECURE_NO_WARNINGS ì¶”ê°€
 
 //#ifndef GL_ARB_point_parameters
 PFNGLPOINTPARAMETERFARBPROC  glPointParameterfARB  = NULL;
