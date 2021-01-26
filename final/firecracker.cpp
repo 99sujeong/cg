@@ -13,13 +13,13 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <stdlib.h>
-#include <GL\glaux.h>  // GL Æú´õ Ãß°¡, Ãß°¡ Á¾¼Ó¼º¿¡ glaux.lib Ãß°¡
+#include <GL\glaux.h>  // GL í´ë” ì¶”ê°€, ì¶”ê°€ ì¢…ì†ì„±ì— glaux.lib ì¶”ê°€
 #include <GL\glut.h>
 #include <GL\glu.h>
-#include "matrix_4x4f.h"    // Çì´õÆÄÀÏ¿¡ Ãß°¡ -> ±âÁ¸ Ç×¸ñ
+#include "matrix_4x4f.h"    // í—¤ë”íŒŒì¼ì— ì¶”ê°€ -> ê¸°ì¡´ í•­ëª©
 #include "particlesystem.h"
-// Ãß°¡ Á¾¼Ó¼º¿¡ legacy_stdio_definitions.lib
-// ¼Ó¼º -> °í±Ş -> ¹®ÀÚÁıÇÕ -> ¸ÖÆ¼¹ÙÀÌÆ® ¹®ÀÚÁıÇÕ
+// ì¶”ê°€ ì¢…ì†ì„±ì— legacy_stdio_definitions.lib
+// ì†ì„± -> ê³ ê¸‰ -> ë¬¸ìì§‘í•© -> ë©€í‹°ë°”ì´íŠ¸ ë¬¸ìì§‘í•©
 
 GLuint g_textureID = -1;
 
@@ -110,7 +110,7 @@ void InitParticles(void) {
 // Name : updateViewMatrix() 
 // Desc : Builds a view matrix suitable for OpenGL.
 //
-// Here's what the final view matrix should look like:(±³Àç 501 ÆäÀÌÁö)
+// Here's what the final view matrix should look like:(êµì¬ 501 í˜ì´ì§€)
 //
 //  |  rx   ry   rz  -(r.e) |
 //  |  ux   uy   uz  -(u.e) |
