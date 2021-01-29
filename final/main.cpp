@@ -14,10 +14,10 @@ using namespace std;
 #include <GL\glu.h>
 #include "matrix_4x4f.h"
 
-#define TEXTURE_NUM 6 // ÀÌ¹ÌÁö °¹¼ö¸¸Å­ Á¤ÀÇ
+#define TEXTURE_NUM 6 // ì´ë¯¸ì§€ ê°¯ìˆ˜ë§Œí¼ ì •ì˜
 GLuint texture[TEXTURE_NUM];
-GLfloat Delta = 0.0, tmp=0.0, sDelta=0.0, stmp=0.0;	// Animation È¿°ú
-const GLfloat light_pos[] = { 0.0, 5.0, 0.5, 1.0 }; // Á¶¸íÀÇ À§Ä¡
+GLfloat Delta = 0.0, tmp=0.0, sDelta=0.0, stmp=0.0;	// Animation íš¨ê³¼
+const GLfloat light_pos[] = { 0.0, 5.0, 0.5, 1.0 }; // ì¡°ëª…ì˜ ìœ„ì¹˜
 GLfloat move_y = 0.0;
 GLfloat move_z = 0.0;
 GLfloat const_att = 1.0;
@@ -29,10 +29,10 @@ vector3f g_vUp(0.0f, 1.0f, 0.0f);    // Up Vector
 vector3f g_vRight(1.0f, 0.0f, 0.0f); // Right Vector
 
 // particle - snow
-int screennum = 0, winddir = 0; // ¹Ù¶÷ÀÇ ¹æÇâ¿¡ µû¶ó ´«ÀÌ ³»¸° ¹æÇâ ¼³Á¤
-GLfloat windspeed = 0.0005f; // ´«ÀÌ ¾ó¸¶³ª »¡¸® ³»¸®´ÂÁö¿¡ ¿µÇâÀ» ÁÖ±â À§ÇÑ ¹Ù¶÷ÀÇ ¼Óµµ ¼³Á¤
-// °ø°£ ÀÌ¹ÌÁö
-char texture_name[TEXTURE_NUM][20] = { "icewall.bmp", "icewall2.bmp", "icefloor.bmp", "base.bmp", "bump.bmp", "Lawn2.bmp"}; // ÁÖÁ¦ÀÌ¹ÌÁö, º®, ¹Ù´Ú ÀÌ¹ÌÁö 
+int screennum = 0, winddir = 0; // ë°”ëŒì˜ ë°©í–¥ì— ë”°ë¼ ëˆˆì´ ë‚´ë¦° ë°©í–¥ ì„¤ì •
+GLfloat windspeed = 0.0005f; // ëˆˆì´ ì–¼ë§ˆë‚˜ ë¹¨ë¦¬ ë‚´ë¦¬ëŠ”ì§€ì— ì˜í–¥ì„ ì£¼ê¸° ìœ„í•œ ë°”ëŒì˜ ì†ë„ ì„¤ì •
+// ê³µê°„ ì´ë¯¸ì§€
+char texture_name[TEXTURE_NUM][20] = { "icewall.bmp", "icewall2.bmp", "icefloor.bmp", "base.bmp", "bump.bmp", "Lawn2.bmp"}; // ì£¼ì œì´ë¯¸ì§€, ë²½, ë°”ë‹¥ ì´ë¯¸ì§€ 
 float g_fDistance = -4.5f;
 float g_fSpinX = 0.0f;
 float g_fSpinY = 0.0f;
@@ -45,7 +45,7 @@ static POINT ptCurrentMousePosit;
 static bool bMousing;
 
 // particle - snow
-// ´«¿¡ ÇØ´çÇÏ´Â ParticleÀ» ±¸Á¶Ã¼·Î ¼±¾ğ
+// ëˆˆì— í•´ë‹¹í•˜ëŠ” Particleì„ êµ¬ì¡°ì²´ë¡œ ì„ ì–¸
 struct particle {
 	GLfloat x, y, z;
 	GLfloat r, g, b;
@@ -55,7 +55,7 @@ struct particle {
 
 GLuint g_textureID[3];
 
-// Ä«¸Ş¶ó ½ÃÁ¡ ÀÌµ¿ update
+// ì¹´ë©”ë¼ ì‹œì  ì´ë™ update
 void updateViewMatrix(void) {
 	matrix4x4f view;
 	view.identity();
@@ -136,7 +136,7 @@ void MyDisplay() {
 	glRotatef(-g_fSpinY, 1.0f, 0.0f, 0.0f);
 	glRotatef(-g_fSpinX, 0.0f, 1.0f, 0.0f);
 
-	// Á¶¸í ¼³Á¤
+	// ì¡°ëª… ì„¤ì •
 	glPushMatrix();
 	glTranslatef(0.0, move_y, move_z);
 	glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, const_att);
@@ -148,16 +148,16 @@ void MyDisplay() {
 
 	updateViewMatrix();
 
-	// µŞ º®
+	// ë’· ë²½
 	glBindTexture(GL_TEXTURE_2D, texture[1]);
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.5f, 0.0f); glVertex3f(1.0f, -1.0f, -1.0f);		// ÅØ½ºÃÄÀÌ¹ÌÁöÀÇ Texel ÁÂÇ¥ 4°³¿Í 4°³ÀÇ Vertex·Î ±¸¼ºµÈ »ç°¢Çü °´Ã¼ÀÇ Vertex ÁÂÇ¥µéÀ» ÀÏ´ëÀÏ·Î ¿¬°á
+	glTexCoord2f(0.5f, 0.0f); glVertex3f(1.0f, -1.0f, -1.0f);		// í…ìŠ¤ì³ì´ë¯¸ì§€ì˜ Texel ì¢Œí‘œ 4ê°œì™€ 4ê°œì˜ Vertexë¡œ êµ¬ì„±ëœ ì‚¬ê°í˜• ê°ì²´ì˜ Vertex ì¢Œí‘œë“¤ì„ ì¼ëŒ€ì¼ë¡œ ì—°ê²°
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.5f, -1.0f, -1.0f);
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(-1.5f, 1.0f, -1.0f);
 	glTexCoord2f(0.5f, 1.0f); glVertex3f(1.0f, 1.0f, -1.0f);
 	glEnd();
 
-	// ¿À¸¥ÂÊ º®
+	// ì˜¤ë¥¸ìª½ ë²½
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0.8f, 0.0f); glVertex3f(1.0f, -1.0f, 1.0f);
@@ -165,14 +165,14 @@ void MyDisplay() {
 	glTexCoord2f(0.0f, 0.8f); glVertex3f(1.0f, 1.0f, -1.0f);
 	glTexCoord2f(0.8f, 0.8f); glVertex3f(1.0f, 1.0f, 1.0f);
 
-	// ¿ŞÂÊ º®
+	// ì™¼ìª½ ë²½
 	glTexCoord2f(0.8f, 0.8f); glVertex3f(-1.5f, 1.0f, -1.0f);
 	glTexCoord2f(0.0f, 0.8f); glVertex3f(-1.5f, 1.0f, 1.0f);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.5f, -1.0f, 1.0f);
 	glTexCoord2f(0.8f, 0.0f); glVertex3f(-1.5f, -1.0f, -1.0f);
 	glEnd();
 
-	// ¹Ù´Ú - ºùÆÇ±æ Ç¥Çö
+	// ë°”ë‹¥ - ë¹™íŒê¸¸ í‘œí˜„
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-1.5f, -1.0f, -1.0f);
@@ -181,17 +181,17 @@ void MyDisplay() {
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-1.5f, -1.0f, 1.0f);
 	glEnd();
 	 
-	// »ç¶÷1 - Å°°¡ Å« »ç¶÷  (¾î¸¥ Ç¥Çö)
-	// ¸Ó¸®
+	// ì‚¬ëŒ1 - í‚¤ê°€ í° ì‚¬ëŒ  (ì–´ë¥¸ í‘œí˜„)
+	// ë¨¸ë¦¬
 	glBindTexture(GL_TEXTURE_2D, texture[3]);
-	glBegin(GL_POLYGON); // »ç°¢Çü ±×¸®±â
+	glBegin(GL_POLYGON); // ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(0.0f, -0.2f + tmp, 1.0f-Delta);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.2f, -0.2f + tmp, 1.0f - Delta);
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.2f, 0.0f + tmp, 1.0f - Delta);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(0.0f, 0.0f + tmp, 1.0f - Delta);
 	glEnd();
 
-	//¸ñ
+	//ëª©
 	glBindTexture(GL_TEXTURE_2D, texture[4]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(-0.05f, -0.2f + tmp, 1.0f - Delta);
@@ -199,7 +199,7 @@ void MyDisplay() {
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.15f, -0.25f + tmp, 1.0f - Delta);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(-0.05f, -0.25f + tmp, 1.0f - Delta);
 	glEnd();
-	//¸öÅë
+	//ëª¸í†µ
 	glBindTexture(GL_TEXTURE_2D, texture[5]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.3f, -0.25f + tmp, 1.0f - Delta);
@@ -207,7 +207,7 @@ void MyDisplay() {
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(0.1f, -0.7f + tmp, 1.0f - Delta);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(0.1f, -0.25f + tmp, 1.0f - Delta);
 	glEnd();
-	//´Ù¸®
+	//ë‹¤ë¦¬
 	glBindTexture(GL_TEXTURE_2D, texture[4]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.2f, -0.7f + tmp, 1.0f - Delta);
@@ -222,7 +222,7 @@ void MyDisplay() {
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(0.0f + tmp, -1.0f, 1.0f - Delta + tmp);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(0.0f, -0.7f + tmp, 1.0f - Delta);
 	glEnd();
-	//ÆÈ
+	//íŒ”
 	glBindTexture(GL_TEXTURE_2D, texture[5]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(-0.3f, -0.3f + tmp, 1.0f - Delta);
@@ -238,16 +238,16 @@ void MyDisplay() {
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(0.2f, -0.5f + tmp, 1.0f - Delta);
 	glEnd();
 
-	// »ç¶÷2 - ÀÛÀº »ç¶÷ (¾ÆÀÌ Ç¥Çö)
-	// ¸Ó¸®
+	// ì‚¬ëŒ2 - ì‘ì€ ì‚¬ëŒ (ì•„ì´ í‘œí˜„)
+	// ë¨¸ë¦¬
 	glBindTexture(GL_TEXTURE_2D, texture[3]);
-	glBegin(GL_POLYGON); // »ç°¢Çü ±×¸®±â
+	glBegin(GL_POLYGON); // ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(-0.6f, -0.5f + stmp, -1.0f + sDelta);
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.8f, -0.5f + stmp, -1.0f + sDelta);
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.8f, -0.3f + stmp, -1.0f + sDelta);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(-0.6f, -0.3f + stmp, -1.0f + sDelta);
 	glEnd();
-	//¸ñ
+	//ëª©
 	glBindTexture(GL_TEXTURE_2D, texture[4]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(-0.65f, -0.5f + stmp, -1.0f + sDelta);
@@ -255,7 +255,7 @@ void MyDisplay() {
 	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.75f, -0.55f + stmp, -1.0f + sDelta);
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(-0.65f, -0.55f + stmp, -1.0f + sDelta);
 	glEnd();
-	//¸öÅë
+	//ëª¸í†µ
 	glBindTexture(GL_TEXTURE_2D, texture[5]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.85f, -0.55f + stmp, -1.0f + sDelta);
@@ -263,7 +263,7 @@ void MyDisplay() {
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(-0.55f, -0.9f + stmp, -1.0f + sDelta);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(-0.55f, -0.55f + stmp, -1.0f + sDelta);
 	glEnd();
-	//´Ù¸®
+	//ë‹¤ë¦¬
 	glBindTexture(GL_TEXTURE_2D, texture[4]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.8f, -0.9f + stmp, -1.0f + sDelta);
@@ -278,7 +278,7 @@ void MyDisplay() {
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(-0.6f + stmp, -1.0f, -1.0f + sDelta - stmp);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(-0.6f, -0.9f + stmp, -1.0f + sDelta);
 	glEnd();
-	//ÆÈ
+	//íŒ”
 	glBindTexture(GL_TEXTURE_2D, texture[5]);
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(-0.85f, -0.65f + stmp, -1.0f + sDelta);
@@ -294,10 +294,10 @@ void MyDisplay() {
 	glTexCoord2f(0.0f, 0.5f); glVertex3f(-0.50f, -0.80f + stmp, -1.0f + sDelta);
 	glEnd();
 
-	// Particle - snow ±×¸®±â
+	// Particle - snow ê·¸ë¦¬ê¸°
 	glPushMatrix();
-	// ¹Ù¶÷ÀÇ ¹æÇâ°ú ¼Óµµ¿¡ µû¸¥ ´«ÀÇ ParticleµéÀ» À§ÇÑ 
-	// ±¸Á¶Ã¼ ¹è¿­ pÀÇ °¢ ¼Ó¼ºµé¿¡ ´ëÇÑ °ª ¼³Á¤
+	// ë°”ëŒì˜ ë°©í–¥ê³¼ ì†ë„ì— ë”°ë¥¸ ëˆˆì˜ Particleë“¤ì„ ìœ„í•œ 
+	// êµ¬ì¡°ì²´ ë°°ì—´ pì˜ ê° ì†ì„±ë“¤ì— ëŒ€í•œ ê°’ ì„¤ì •
 	for (int i = 0; i < 1000; i++) {
 		p[i].x += cos(winddir * .0174532925f) * windspeed;
 		p[i].y += p[i].yd;
@@ -316,7 +316,7 @@ void MyDisplay() {
 		}
 	}
 
-	// ´«ÀÇ ParticleµéÀ» À§ÇÑ ¼­·Î ´Ù¸¥ Å©±âÀÇ ´Ù°¢ÇüÀ» »ı¼º
+	// ëˆˆì˜ Particleë“¤ì„ ìœ„í•œ ì„œë¡œ ë‹¤ë¥¸ í¬ê¸°ì˜ ë‹¤ê°í˜•ì„ ìƒì„±
 	for (int i = 0; i < 1000; i++) {
 		float dif = 0.0;
 		if (i % 3 == 0)		dif = 0.01;
@@ -346,12 +346,12 @@ AUX_RGBImageRec * LoadBMP(char *Filename) {
 	File = fopen(Filename, "r");
 	if (File) {
 		fclose(File);
-		return auxDIBImageLoad(Filename);	     // ÆÄÀÏ·ÎºÎÅÍ ¸Ş¸ğ¸®·Î
+		return auxDIBImageLoad(Filename);	     // íŒŒì¼ë¡œë¶€í„° ë©”ëª¨ë¦¬ë¡œ
 	}
 	return NULL;
 }
 
-int LoadGLTextures() {   // ÆÄÀÏÀ» ·ÎµåÇÏ°í ÅØ½ºÃÄ·Î º¯È¯
+int LoadGLTextures() {   // íŒŒì¼ì„ ë¡œë“œí•˜ê³  í…ìŠ¤ì³ë¡œ ë³€í™˜
 	int Status = TRUE, i;
 	AUX_RGBImageRec *TextureImage;
 
@@ -381,8 +381,8 @@ int LoadGLTextures() {   // ÆÄÀÏÀ» ·ÎµåÇÏ°í ÅØ½ºÃÄ·Î º¯È¯
 
 int InitGL(void) { 
 	LoadTexture();
-	// ´«ÀÇ ParticleµéÀ» À§ÇÑ ±¸Á¶Ã¼ ¹è¿­ pÀÇ
-	// °¢ ¼Ó¼ºµé¿¡ ´ëÇÑ ÃÊ±â°ª ¼³Á¤
+	// ëˆˆì˜ Particleë“¤ì„ ìœ„í•œ êµ¬ì¡°ì²´ ë°°ì—´ pì˜
+	// ê° ì†ì„±ë“¤ì— ëŒ€í•œ ì´ˆê¸°ê°’ ì„¤ì •
 	for (int i = 0; i < 1000; i++) {
 		p[i].xd = -(rand() / 32767.0f - 0.5f) / 200.0f;
 		p[i].zd = -(rand() / 32767.0f - 0.5f) / 200.0f;
@@ -397,18 +397,18 @@ int InitGL(void) {
 
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClearDepth(1.0f); // Depth ¹öÆÛ¿¡ ´ëÇÑ ¸íÈ®ÇÑ °ª ÁöÁ¤
-	glEnable(GL_TEXTURE_2D); // 2D Texture MappingÀÌ °¡´ÉÇÏµµ·Ï È°¼ºÈ­
-	glEnable(GL_BLEND); // BlendingÀ» È°¼ºÈ­
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE); // BlendingÀ» ¼öÇà / ParticleµéÀÌ Alpha BlendingÀ¸·Î Á¦´ë·Î °ãÃÄÁú ¼ö ÀÖµµ·Ï ÇÏ´Â ±â´É ¼öÇà
-	glEnable(GL_DEPTH_TEST); // Depth Test È°¼ºÈ­
-	glDepthFunc(GL_LEQUAL); // Depth ¹öÆÛ ºñ±³¸¦ À§ÇØ »ç¿ëµÈ °ª ÁöÁ¤
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // ±¸Çö °íÀ¯ÀÇ ÈùÆ®¸¦ ÁöÁ¤
+	glClearDepth(1.0f); // Depth ë²„í¼ì— ëŒ€í•œ ëª…í™•í•œ ê°’ ì§€ì •
+	glEnable(GL_TEXTURE_2D); // 2D Texture Mappingì´ ê°€ëŠ¥í•˜ë„ë¡ í™œì„±í™”
+	glEnable(GL_BLEND); // Blendingì„ í™œì„±í™”
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE); // Blendingì„ ìˆ˜í–‰ / Particleë“¤ì´ Alpha Blendingìœ¼ë¡œ ì œëŒ€ë¡œ ê²¹ì³ì§ˆ ìˆ˜ ìˆë„ë¡ í•˜ëŠ” ê¸°ëŠ¥ ìˆ˜í–‰
+	glEnable(GL_DEPTH_TEST); // Depth Test í™œì„±í™”
+	glDepthFunc(GL_LEQUAL); // Depth ë²„í¼ ë¹„êµë¥¼ ìœ„í•´ ì‚¬ìš©ëœ ê°’ ì§€ì •
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); // êµ¬í˜„ ê³ ìœ ì˜ íŒíŠ¸ë¥¼ ì§€ì •
 
 	return true;
 }
 
-// Á¶¸í ¼³Á¤
+// ì¡°ëª… ì„¤ì •
 void MyInit() {
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -418,21 +418,21 @@ void MyInit() {
 	glEnable(GL_DEPTH_TEST);
 }
 
-void MySpecial(int key, int x, int y) { // Å°º¸µå 
+void MySpecial(int key, int x, int y) { // í‚¤ë³´ë“œ 
 	vector3f tmpLook = g_vLook;
 	vector3f tmpRight = g_vRight;
 	vector3f tmpUp = g_vUp;
 
-	if (key == GLUT_KEY_UP) { // À§·Î ÀÌµ¿
+	if (key == GLUT_KEY_UP) { // ìœ„ë¡œ ì´ë™
 		g_vEye += tmpUp * -g_fMoveSpeed * g_fElpasedTime;
 	}
-	else if (key == GLUT_KEY_DOWN) { // ¾Æ·¡·Î ÀÌµ¿
+	else if (key == GLUT_KEY_DOWN) { // ì•„ë˜ë¡œ ì´ë™
 		g_vEye -= (tmpUp * -g_fMoveSpeed) * g_fElpasedTime;
 	}
-	else if (key == GLUT_KEY_LEFT) { // ¿ŞÂÊÀ¸·Î ÀÌµ¿
+	else if (key == GLUT_KEY_LEFT) { // ì™¼ìª½ìœ¼ë¡œ ì´ë™
 		g_vEye += (tmpRight * g_fMoveSpeed) * g_fElpasedTime;
 	}
-	else if (key == GLUT_KEY_RIGHT) { // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+	else if (key == GLUT_KEY_RIGHT) { // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™
 		g_vEye -= (tmpRight * g_fMoveSpeed) * g_fElpasedTime;
 	}
 	else if (key == GLUT_KEY_PAGE_UP) { // Zoom In
@@ -447,10 +447,10 @@ void MySpecial(int key, int x, int y) { // Å°º¸µå
 
 void spinDisplay(void)
 {
-	Delta += 0.001; // Å« »ç¶÷ z ÁÂÇ¥ °ª Áõ°¡
-	if (Delta > 0.5) { // µ¨Å¸ °ªÀÌ 0.5°¡ ³ÑÀ¸¸é tmp·Î »ç¶÷ÀÌ ³Ñ¾îÁö´Â °ÍÀ» Ç¥Çö
+	Delta += 0.001; // í° ì‚¬ëŒ z ì¢Œí‘œ ê°’ ì¦ê°€
+	if (Delta > 0.5) { // ë¸íƒ€ ê°’ì´ 0.5ê°€ ë„˜ìœ¼ë©´ tmpë¡œ ì‚¬ëŒì´ ë„˜ì–´ì§€ëŠ” ê²ƒì„ í‘œí˜„
 		tmp -= 0.001;
-		if (tmp < -0.3) { // ¶¥¿¡ »ç¶÷ÀÌ ´êÀ¸¸é ¿ø»óÅÂ·Î µ¹¾Æ°¡ ¹İº¹ 
+		if (tmp < -0.3) { // ë•…ì— ì‚¬ëŒì´ ë‹¿ìœ¼ë©´ ì›ìƒíƒœë¡œ ëŒì•„ê°€ ë°˜ë³µ 
 			Delta = 0.0; tmp = 0.0;
 		}
 	}
@@ -461,20 +461,20 @@ void spinDisplay(void)
 			sDelta = 0.0; stmp = 0.0;
 		}
 	}
-	glutPostRedisplay(); // ¹Ù²ï µ¨Å¸ °ªÀ¸·Î Ã¢¿¡ ±×¸².
+	glutPostRedisplay(); // ë°”ë€ ë¸íƒ€ ê°’ìœ¼ë¡œ ì°½ì— ê·¸ë¦¼.
 }
 
 void MyMouse(int button, int state, int x, int y) {
 	switch (button) {
 	case GLUT_LEFT_BUTTON:
-		if (state == GLUT_DOWN) { // Left Button Å¬¸¯ÇÒ °æ¿ì Play
+		if (state == GLUT_DOWN) { // Left Button í´ë¦­í•  ê²½ìš° Play
 			glutIdleFunc(spinDisplay);
 		}
 		else
 			bMousing = false;
 		break;
 	case GLUT_MIDDLE_BUTTON:
-	case GLUT_RIGHT_BUTTON: // Right Button Å¬¸¯ÇÒ °æ¿ì Pause
+	case GLUT_RIGHT_BUTTON: // Right Button í´ë¦­í•  ê²½ìš° Pause
 		if (state == GLUT_DOWN) {
 			glutIdleFunc(NULL);
 		}
@@ -487,14 +487,14 @@ void MyMouse(int button, int state, int x, int y) {
 }
 
 void MyTimer(int Value) {
-	glutTimerFunc(50, MyTimer, 1); // °è¼ÓÇØ¼­ ÀÚµ¿ÀûÀ¸·Î ¾Ö´Ï¸ŞÀÌ¼Ç È¿°ú ÁÜ => ´Ù¸¥ Å°¸¦ ´©¸£Áö ¾Ê´Â ÀÌ»ó °è¼Ó
+	glutTimerFunc(50, MyTimer, 1); // ê³„ì†í•´ì„œ ìë™ì ìœ¼ë¡œ ì• ë‹ˆë©”ì´ì…˜ íš¨ê³¼ ì¤Œ => ë‹¤ë¥¸ í‚¤ë¥¼ ëˆ„ë¥´ì§€ ì•ŠëŠ” ì´ìƒ ê³„ì†
 }
 
 int main(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowPosition(100, 50);
-	glutInitWindowSize(1024, 768); // ÇØ»óµµ 1024*768
+	glutInitWindowSize(1024, 768); // í•´ìƒë„ 1024*768
 	glutCreateWindow("OpenGL hw#3_20181028");
 	InitGL();
 	MyInit();
@@ -510,7 +510,7 @@ int main(int argc, char **argv) {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	glutTimerFunc(50, MyTimer, 1); // 50msec(0.05ÃÊ)
+	glutTimerFunc(50, MyTimer, 1); // 50msec(0.05ì´ˆ)
 	glutMainLoop();
 
 	return 0;
