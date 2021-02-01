@@ -1,12 +1,12 @@
 #include <GL\glut.h>
 
-// Àü¿ª º¯¼ö ¼±¾ğ ¹× ÃÊ±âÈ­
-GLfloat tXr = 0.0, tYr = 0.0; // »ç°¢Çü
-GLfloat tXt = 0.0, tYt = 0.0; // »ï°¢Çü
+// ì „ì—­ ë³€ìˆ˜ ì„ ì–¸ ë° ì´ˆê¸°í™”
+GLfloat tXr = 0.0, tYr = 0.0; // ì‚¬ê°í˜•
+GLfloat tXt = 0.0, tYt = 0.0; // ì‚¼ê°í˜•
 GLboolean isRec = true, isTri = false;
 GLfloat Delta = 0.0;	// Timer
 
-void MyDisplay() { // openGLÀ» ´ã´ç
+void MyDisplay() { // openGLì„ ë‹´ë‹¹
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glBegin(GL_POLYGON);
@@ -25,7 +25,7 @@ void MyDisplay() { // openGLÀ» ´ã´ç
 	glEnd();
 
 	glColor3f(0.8, 0.0 + Delta, 0.7);
-	glutSolidTeapot(0.5 + Delta); // Å©±â º¯°æ
+	glutSolidTeapot(0.5 + Delta); // í¬ê¸° ë³€ê²½
 
 	//glFlush(); // => single buffer
 	glutSwapBuffers(); // => double buffer
@@ -33,8 +33,8 @@ void MyDisplay() { // openGLÀ» ´ã´ç
 }
 
 void MyReshape(int w, int h) {
-	// => Ã¢ÀÇ Å©±â¿¡ ºñ·ÊÇØ¼­ Ã¢ ¾ÈÀÇ ¸ğµç ³»¿ëÀÌ ¸ğµ¨¸µ
-	// Ã¢ÀÇ Å©±â¿¡ °ü°è¾øÀÌ Ã¢¾ÈÀÇ ³»¿ëÀº ±×´ë·Î À¯Áö
+	// => ì°½ì˜ í¬ê¸°ì— ë¹„ë¡€í•´ì„œ ì°½ ì•ˆì˜ ëª¨ë“  ë‚´ìš©ì´ ëª¨ë¸ë§
+	// ì°½ì˜ í¬ê¸°ì— ê´€ê³„ì—†ì´ ì°½ì•ˆì˜ ë‚´ìš©ì€ ê·¸ëŒ€ë¡œ ìœ ì§€
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -50,44 +50,44 @@ void MyKeyboard(unsigned char key, int x, int y) {
 	case 'Q':
 	case 'q':
 	case 27: // ESC
-		exit(0); break; // window Á¾·á 
+		exit(0); break; // window ì¢…ë£Œ 
 	}
 	
-	//MyDisplay(); // => ÀÌ·¸°Ô Á÷Á¢ È£ÃâÇÏ´Â °ÍÀº ¾È µÊ
-	glutPostRedisplay(); // => Á÷Á¢ È£Ãâ ÇÏ´Â °ÍÀÌ ¾Æ³ª¶ó ÇÔ¼ö¸¦ ÅëÇØ °£Á¢ È£Ãâ
+	//MyDisplay(); // => ì´ë ‡ê²Œ ì§ì ‘ í˜¸ì¶œí•˜ëŠ” ê²ƒì€ ì•ˆ ë¨
+	glutPostRedisplay(); // => ì§ì ‘ í˜¸ì¶œ í•˜ëŠ” ê²ƒì´ ì•„ë‚˜ë¼ í•¨ìˆ˜ë¥¼ í†µí•´ ê°„ì ‘ í˜¸ì¶œ
 }
 
 void MySpecial(int key, int x, int y) {
-	// Ã¢ ¾È¿¡ ÀÖ´Â µµÇüÀ» ¿òÁ÷ÀÌ´Â °Å => Å°¸¦ ´­·¶À» ‹š Å°¿¡ ÀÇÇØ MyDisplau¤Ä ±×·ÁÁ® ÀÖ´Â µµÇüÀ» ¿òÁ÷ÀÌ°í ½ÍÀº °Í.
-	// µµÇüÀ» ¿òÁ÷ÀÌ°í ½ÍÀ¸¸é Àü¿ª º¯¼ö ¼±¾ğÇØ º¯¼ö °ªÀ» ¹Ù²ñ
+	// ì°½ ì•ˆì— ìˆëŠ” ë„í˜•ì„ ì›€ì§ì´ëŠ” ê±° => í‚¤ë¥¼ ëˆŒë €ì„ Â‹Âš í‚¤ì— ì˜í•´ MyDisplauã…” ê·¸ë ¤ì ¸ ìˆëŠ” ë„í˜•ì„ ì›€ì§ì´ê³  ì‹¶ì€ ê²ƒ.
+	// ë„í˜•ì„ ì›€ì§ì´ê³  ì‹¶ìœ¼ë©´ ì „ì—­ ë³€ìˆ˜ ì„ ì–¸í•´ ë³€ìˆ˜ ê°’ì„ ë°”ë€œ
 	switch (key) {
-	case GLUT_KEY_DOWN:	// ¾Æ·¡¹æÇâ È­»ìÇ¥
+	case GLUT_KEY_DOWN:	// ì•„ë˜ë°©í–¥ í™”ì‚´í‘œ
 		if(isRec)	tYr -= 0.1;
 		else if (isTri)		tYt -= 0.1;
 		break;
-	case GLUT_KEY_UP:	// À§¹æÇâ È­»ìÇ¥
+	case GLUT_KEY_UP:	// ìœ„ë°©í–¥ í™”ì‚´í‘œ
 		if (isRec)	tYr += 0.1;
 		else if (isTri)		tYt += 0.1;
 		break;
-	case GLUT_KEY_LEFT:	// ¿ŞÂÊ¹æÇâ È­»ìÇ¥
+	case GLUT_KEY_LEFT:	// ì™¼ìª½ë°©í–¥ í™”ì‚´í‘œ
 		if (isRec)	tXr -= 0.1;
 		else if (isTri)		tXt -= 0.1;
 		break;
-	case GLUT_KEY_RIGHT:// ¿À¸¥ÂÊ¹æÇâ È­»ìÇ¥
+	case GLUT_KEY_RIGHT:// ì˜¤ë¥¸ìª½ë°©í–¥ í™”ì‚´í‘œ
 		if (isRec)	tXr += 0.1;
 		else if (isTri)		tXt += 0.1;
 		break;
 	}
-	glutPostRedisplay(); // ¹Ù²ï º¯¼ö °ªÀ¸·Î ±×¸²À» ´Ù½Ã ±×¸² => º¯¼ö °ªÀÌ ¹Ù²ğ ¶§¸¶´Ù µµÇüÀ» ´Ù½Ã ±×¸²
+	glutPostRedisplay(); // ë°”ë€ ë³€ìˆ˜ ê°’ìœ¼ë¡œ ê·¸ë¦¼ì„ ë‹¤ì‹œ ê·¸ë¦¼ => ë³€ìˆ˜ ê°’ì´ ë°”ë€” ë•Œë§ˆë‹¤ ë„í˜•ì„ ë‹¤ì‹œ ê·¸ë¦¼
 }
 
 void MyModelMenu(int entryID) {
-	if (entryID == 1) { // »ç°¢Çü ¼±ÅÃ
-		// »ç°¢Çü ¼±ÅÃµÇ¾ú´Ù°í ¾Ë·ÁÁÜ
+	if (entryID == 1) { // ì‚¬ê°í˜• ì„ íƒ
+		// ì‚¬ê°í˜• ì„ íƒë˜ì—ˆë‹¤ê³  ì•Œë ¤ì¤Œ
 		isRec = true;
 		isTri = false;
 	}
-	else if (entryID == 2) { // »ï°¢Çü ¼±ÅÃ
+	else if (entryID == 2) { // ì‚¼ê°í˜• ì„ íƒ
 		isRec = false;
 		isTri = true;
 	}
@@ -101,8 +101,8 @@ void MyMainMenu(int entryID) {
 void MyTimer(int Value) {
 	Delta += 0.01;
 	if (Delta > 1.0) Delta = 0.0;
-	glutPostRedisplay(); // ¹Ù²ï µ¨Å¸ °ªÀ¸·Î Ã¢¿¡ ±×¸².
-	glutTimerFunc(40, MyTimer, 1); // °è¼ÓÇØ¼­ ÀÚµ¿ÀûÀ¸·Î ¾Ö´Ï¸ŞÀÌ¼Ç È¿°ú ÁÜ => ´Ù¸¥ Å°¸¦ ´©¸£Áö ¾Ê´Â ÀÌ»ó °è¼Ó
+	glutPostRedisplay(); // ë°”ë€ ë¸íƒ€ ê°’ìœ¼ë¡œ ì°½ì— ê·¸ë¦¼.
+	glutTimerFunc(40, MyTimer, 1); // ê³„ì†í•´ì„œ ìë™ì ìœ¼ë¡œ ì• ë‹ˆë©”ì´ì…˜ íš¨ê³¼ ì¤Œ => ë‹¤ë¥¸ í‚¤ë¥¼ ëˆ„ë¥´ì§€ ì•ŠëŠ” ì´ìƒ ê³„ì†
 }
 
 int main(int argc, char** argv) {
@@ -112,24 +112,24 @@ int main(int argc, char** argv) {
 	glutInitWindowPosition(200, 100);
 
 	glutCreateWindow("My First Creative Graphics - OpenGL HW1");
-	glClearColor(0.9, 1.0, 0.8, 1.0); // Ã¢ÀÇ ¹è°æ»ö
+	glClearColor(0.9, 1.0, 0.8, 1.0); // ì°½ì˜ ë°°ê²½ìƒ‰
 
 	glutDisplayFunc(MyDisplay);
 	glutReshapeFunc(MyReshape);
 	glutKeyboardFunc(MyKeyboard);
 	glutSpecialFunc(MySpecial);
-	GLint MyModelID = glutCreateMenu(MyModelMenu); // menu ¸¸µé±â
-	glutAddMenuEntry("»ç°¢Çü", 1); // 1 ¶Ç´Â 2. ID Áßº¹µÇÁö ¾Ê°Ô ¼±¾ğ
-	glutAddMenuEntry("»ï°¢Çü", 2);
+	GLint MyModelID = glutCreateMenu(MyModelMenu); // menu ë§Œë“¤ê¸°
+	glutAddMenuEntry("ì‚¬ê°í˜•", 1); // 1 ë˜ëŠ” 2. ID ì¤‘ë³µë˜ì§€ ì•Šê²Œ ì„ ì–¸
+	glutAddMenuEntry("ì‚¼ê°í˜•", 2);
 
 	glutCreateMenu(MyMainMenu);
 
-	glutAddSubMenu("¸ğµ¨", MyModelID); // ±âÁ¸ ¸Ş´º¸¦ ¼­ºê ¸Ş´º·Î »ç¿ëÇÏ°í ½ÍÀ» ¶§
-	glutAddMenuEntry("Exit", 9); // ¼­ºê ¸Ş´º¿¡ µé¾î°¡´Â ÀÖ´Â °ÍµéÀº Ã³¸®ÇÒ ÇÊ¿ä¾ø°í AddMenu¿¡ µé¾î¿Â °Í¸¸ Ã³¸®ÇÏ¸é µÈ´Ù. 
+	glutAddSubMenu("ëª¨ë¸", MyModelID); // ê¸°ì¡´ ë©”ë‰´ë¥¼ ì„œë¸Œ ë©”ë‰´ë¡œ ì‚¬ìš©í•˜ê³  ì‹¶ì„ ë•Œ
+	glutAddMenuEntry("Exit", 9); // ì„œë¸Œ ë©”ë‰´ì— ë“¤ì–´ê°€ëŠ” ìˆëŠ” ê²ƒë“¤ì€ ì²˜ë¦¬í•  í•„ìš”ì—†ê³  AddMenuì— ë“¤ì–´ì˜¨ ê²ƒë§Œ ì²˜ë¦¬í•˜ë©´ ëœë‹¤. 
 
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
-	glutTimerFunc(40, MyTimer, 1); // 40msec(0.04ÃÊ)
+	glutTimerFunc(40, MyTimer, 1); // 40msec(0.04ì´ˆ)
 	glutMainLoop();
 	return 0;
 }
