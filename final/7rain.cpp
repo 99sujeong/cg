@@ -3,11 +3,11 @@
 #include <math.h>
 #include <fstream>
 using namespace std;
-#include <GL\glaux.h>		// GL Æú´õ Ãß°¡, Ãß°¡ Á¾¼Ó¼º¿¡ glaux.lib Ãß°¡
+#include <GL\glaux.h>		// GL í´ë” ì¶”ê°€, ì¶”ê°€ ì¢…ì†ì„±ì— glaux.lib ì¶”ê°€
 #include <GL\glut.h>	
 #include <GL\glu.h>	
-// ¼Ó¼º -> °í±Ş -> ¹®ÀÚÁıÇÕ -> ¸ÖÆ¼¹ÙÀÌÆ® ¹®ÀÚÁıÇÕ
-// Ãß°¡ Á¾¼Ó¼º¿¡ legacy_stdio_definitions.lib
+// ì†ì„± -> ê³ ê¸‰ -> ë¬¸ìì§‘í•© -> ë©€í‹°ë°”ì´íŠ¸ ë¬¸ìì§‘í•©
+// ì¶”ê°€ ì¢…ì†ì„±ì— legacy_stdio_definitions.lib
 
 int screennum = 0, winddir = 45;
 GLfloat windspeed = 0.0005f;
