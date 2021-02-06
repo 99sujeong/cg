@@ -3,10 +3,10 @@
 #include <GL\glut.h>
 #include <GL\glu.h>
 
-#define TEXTURE_NUM 3 // ÀÌ¹ÌÁö °¹¼ö¸¸Å­ Á¤ÀÇ
+#define TEXTURE_NUM 3 // ì´ë¯¸ì§€ ê°¯ìˆ˜ë§Œí¼ ì •ì˜
 GLuint texture[TEXTURE_NUM];
 
-char texture_name[TEXTURE_NUM][20] = { "travel.bmp", "wall.bmp", "floor.bmp" }; // ÁÖÁ¦ÀÌ¹ÌÁö, º®, ¹Ù´Ú ÀÌ¹ÌÁö 
+char texture_name[TEXTURE_NUM][20] = { "travel.bmp", "wall.bmp", "floor.bmp" }; // ì£¼ì œì´ë¯¸ì§€, ë²½, ë°”ë‹¥ ì´ë¯¸ì§€ 
 float g_fDistance = -4.5f;
 float g_fSpinX = 0.0f;
 float g_fSpinY = 0.0f;
@@ -33,22 +33,22 @@ void MyDisplay() {
 	glRotatef(-g_fSpinY, 1.0f, 0.0f, 0.0f);
 	glRotatef(-g_fSpinX, 0.0f, 1.0f, 0.0f);
 
-	// µŞ º®
+	// ë’· ë²½
 	glBindTexture(GL_TEXTURE_2D, texture[1]);
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.34f, 0.0f); glVertex3f(1.0f, -1.0f, -1.0f);		// ÅØ½ºÃÄÀÌ¹ÌÁöÀÇ Texel ÁÂÇ¥ 4°³¿Í 4°³ÀÇ Vertex·Î ±¸¼ºµÈ »ç°¢Çü °´Ã¼ÀÇ Vertex ÁÂÇ¥µéÀ» ÀÏ´ëÀÏ·Î ¿¬°á
+	glTexCoord2f(0.34f, 0.0f); glVertex3f(1.0f, -1.0f, -1.0f);		// í…ìŠ¤ì³ì´ë¯¸ì§€ì˜ Texel ì¢Œí‘œ 4ê°œì™€ 4ê°œì˜ Vertexë¡œ êµ¬ì„±ëœ ì‚¬ê°í˜• ê°ì²´ì˜ Vertex ì¢Œí‘œë“¤ì„ ì¼ëŒ€ì¼ë¡œ ì—°ê²°
 	glTexCoord2f(0.684f, 0.0f); glVertex3f(-1.5f, -1.0f, -1.0f);		
 	glTexCoord2f(0.684f, 0.5f); glVertex3f(-1.5f, 1.0f, -1.0f);
 	glTexCoord2f(0.34f, 0.5f); glVertex3f(1.0f, 1.0f, -1.0f);
 	
-	// ¿À¸¥ÂÊ º®
+	// ì˜¤ë¥¸ìª½ ë²½
 	glTexCoord2f(0.34f, 0.51f); glVertex3f(1.0f, -1.0f, 1.0f);		
 	glTexCoord2f(0.683f, 0.51f); glVertex3f(1.0f, -1.0f, -1.0f);
 	glTexCoord2f(0.683f, 1.0f); glVertex3f(1.0f, 1.0f, -1.0f);
 	glTexCoord2f(0.34f, 1.0f); glVertex3f(1.0f, 1.0f, 1.0f);
 	glEnd();
 
-	// ¹Ù´Ú
+	// ë°”ë‹¥
 	glBindTexture(GL_TEXTURE_2D, texture[2]);
 	glBegin(GL_QUADS);
 	glTexCoord2f(0.8f, 0.0f); glVertex3f(-1.5f, -1.0f, -1.0f);		
@@ -57,35 +57,35 @@ void MyDisplay() {
 	glTexCoord2f(0.3f, 0.0f); glVertex3f(-1.5f, -1.0f, 1.0f);
 	glEnd();
 
-	// ¾×ÀÚ ±¸¼ºÇÏ±â
-	// ¾×ÀÚ Å×µÎ¸® ±×¸®±â
-	// ¾×ÀÚ 1 Å×µÎ¸®
-	glBegin(GL_POLYGON); // »ç°¢Çü ±×¸®±â
-	glColor3f(1.0, 0.0, 0.0); // »¡°£»ö Å×µÎ¸®
-	glVertex3f(-0.67f, -0.13f, -0.99f); // wall(º®)¿¡¼­ 0.01¸¸Å­ ¶ç¿ì±â
+	// ì•¡ì êµ¬ì„±í•˜ê¸°
+	// ì•¡ì í…Œë‘ë¦¬ ê·¸ë¦¬ê¸°
+	// ì•¡ì 1 í…Œë‘ë¦¬
+	glBegin(GL_POLYGON); // ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
+	glColor3f(1.0, 0.0, 0.0); // ë¹¨ê°„ìƒ‰ í…Œë‘ë¦¬
+	glVertex3f(-0.67f, -0.13f, -0.99f); // wall(ë²½)ì—ì„œ 0.01ë§Œí¼ ë„ìš°ê¸°
 	glVertex3f(-1.43f, -0.13f, -0.99f);
 	glVertex3f(-1.43f, 0.73f, -0.99f);
 	glVertex3f(-0.67f, 0.73f, -0.99f);
 	glEnd();
-	// ¾×ÀÚ 2 Å×µÎ¸®
-	glBegin(GL_POLYGON); // »ç°¢Çü ±×¸®±â
-	glColor3f(0.5, 1.0, 0.5); // Å¹ÇÑ ÃÊ·Ï»ö Å×µÎ¸®
-	glVertex3f(0.13f, -0.73f, -0.99f);	// wall(º®)¿¡¼­ 0.01¸¸Å­ ¶ç¿ì±â	
+	// ì•¡ì 2 í…Œë‘ë¦¬
+	glBegin(GL_POLYGON); // ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
+	glColor3f(0.5, 1.0, 0.5); // íƒí•œ ì´ˆë¡ìƒ‰ í…Œë‘ë¦¬
+	glVertex3f(0.13f, -0.73f, -0.99f);	// wall(ë²½)ì—ì„œ 0.01ë§Œí¼ ë„ìš°ê¸°	
 	glVertex3f(-0.63f, -0.73f, -0.99f);
 	glVertex3f(-0.63f, 0.03f, -0.99f);
 	glVertex3f(0.13f, 0.03f, -0.99f);
 	glEnd();
-	// ¾×ÀÚ 3 Å×µÎ¸®
-	glBegin(GL_POLYGON); // »ç°¢Çü ±×¸®±â
-	glColor3f(0.0, 0.0, 1.0); // ÆÄ¶õ»ö Å×µÎ¸®
-	glVertex3f(0.93f, -0.83f, -0.99f);	// wall(º®)¿¡¼­ 0.01¸¸Å­ ¶ç¿ì±â
+	// ì•¡ì 3 í…Œë‘ë¦¬
+	glBegin(GL_POLYGON); // ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
+	glColor3f(0.0, 0.0, 1.0); // íŒŒë€ìƒ‰ í…Œë‘ë¦¬
+	glVertex3f(0.93f, -0.83f, -0.99f);	// wall(ë²½)ì—ì„œ 0.01ë§Œí¼ ë„ìš°ê¸°
 	glVertex3f(0.17f, -0.83f, -0.99f);
 	glVertex3f(0.17f, 0.83f, -0.99f);
 	glVertex3f(0.93f, 0.83f, -0.99f);
 	glEnd();
-	// ¾×ÀÚ 4 Å×µÎ¸®
-	glBegin(GL_POLYGON); // »ç°¢Çü ±×¸®±â
-	glColor3f(0.0, 1.0, 0.0); // ÃÊ·Ï»ö Å×µÎ¸®
+	// ì•¡ì 4 í…Œë‘ë¦¬
+	glBegin(GL_POLYGON); // ì‚¬ê°í˜• ê·¸ë¦¬ê¸°
+	glColor3f(0.0, 1.0, 0.0); // ì´ˆë¡ìƒ‰ í…Œë‘ë¦¬
 	glVertex3f(0.99f, -0.53f, 0.93f);	
 	glVertex3f(0.99f, -0.53f, -0.93f);
 	glVertex3f(0.99f, 0.53f, -0.93f);
@@ -94,27 +94,27 @@ void MyDisplay() {
 	glEnd();
 
 
-	// ¾×ÀÚ ±¸¼º
-	// ¾×ÀÚ ÀÌ¹ÌÁö ³Ö±â 
-	// ¾×ÀÚ 1 ÀÌ¹ÌÁö - ¸¶Ä«¿À1
+	// ì•¡ì êµ¬ì„±
+	// ì•¡ì ì´ë¯¸ì§€ ë„£ê¸° 
+	// ì•¡ì 1 ì´ë¯¸ì§€ - ë§ˆì¹´ì˜¤1
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
 	glBegin(GL_QUADS);
-	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.7f, -0.1f, -0.98f); // ¾×ÀÚÅ×µÎ¸®·ÎºÎÅÍ 0.1f ¶ç¿ì±â Áï, wall¿¡¼­ 0.2 ¶ç¿ò		
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-0.7f, -0.1f, -0.98f); // ì•¡ìí…Œë‘ë¦¬ë¡œë¶€í„° 0.1f ë„ìš°ê¸° ì¦‰, wallì—ì„œ 0.2 ë„ì›€		
 	glTexCoord2f(0.5f, 0.0f); glVertex3f(-1.4f, -0.1f, -0.98f);
 	glTexCoord2f(0.5f, 0.49f); glVertex3f(-1.4f, 0.7f, -0.98f);
 	glTexCoord2f(0.0f, 0.49f); glVertex3f(-0.7f, 0.7f, -0.98f);
-	// ¾×ÀÚ 2 ÀÌ¹ÌÁö - ¸¶Ä«¿À2
-	glTexCoord2f(0.51f, 0.0f); glVertex3f(0.1f, -0.7f, -0.98f);	// ¾×ÀÚÅ×µÎ¸®·ÎºÎÅÍ 0.1f ¶ç¿ì±â Áï, wall¿¡¼­ 0.2 ¶ç¿ò	
+	// ì•¡ì 2 ì´ë¯¸ì§€ - ë§ˆì¹´ì˜¤2
+	glTexCoord2f(0.51f, 0.0f); glVertex3f(0.1f, -0.7f, -0.98f);	// ì•¡ìí…Œë‘ë¦¬ë¡œë¶€í„° 0.1f ë„ìš°ê¸° ì¦‰, wallì—ì„œ 0.2 ë„ì›€	
 	glTexCoord2f(1.0f, 0.0f); glVertex3f(-0.6f, -0.7f, -0.98f);
 	glTexCoord2f(1.0f, 0.5f); glVertex3f(-0.6f, 0.0f, -0.98f);
 	glTexCoord2f(0.51f, 0.5f); glVertex3f(0.1f, 0.0f, -0.98f);
-	// ¾×ÀÚ 3 ÀÌ¹ÌÁö - ¸¶Ä«¿À3
-	glTexCoord2f(0.0, 0.5f); glVertex3f(0.9f, -0.8f, -0.98f);	// ¾×ÀÚÅ×µÎ¸®·ÎºÎÅÍ 0.1f ¶ç¿ì±â Áï, wall¿¡¼­ 0.2 ¶ç¿ò
+	// ì•¡ì 3 ì´ë¯¸ì§€ - ë§ˆì¹´ì˜¤3
+	glTexCoord2f(0.0, 0.5f); glVertex3f(0.9f, -0.8f, -0.98f);	// ì•¡ìí…Œë‘ë¦¬ë¡œë¶€í„° 0.1f ë„ìš°ê¸° ì¦‰, wallì—ì„œ 0.2 ë„ì›€
 	glTexCoord2f(0.5f, 0.5f); glVertex3f(0.2f, -0.8f, -0.98f);
 	glTexCoord2f(0.5f, 1.0f); glVertex3f(0.2f, 0.8f, -0.98f);
 	glTexCoord2f(0.0f, 1.0f); glVertex3f(0.9f, 0.8f, -0.98f);
-	// ¾×ÀÚ 4 ÀÌ¹ÌÁö - ¸¶Ä«¿À4
-	glTexCoord2f(0.51f, 0.51f); glVertex3f(0.98f, -0.5f, 0.9f);	// ¾×ÀÚÅ×µÎ¸®·ÎºÎÅÍ 0.1f ¶ç¿ì±â Áï, wall¿¡¼­ 0.2 ¶ç¿ò
+	// ì•¡ì 4 ì´ë¯¸ì§€ - ë§ˆì¹´ì˜¤4
+	glTexCoord2f(0.51f, 0.51f); glVertex3f(0.98f, -0.5f, 0.9f);	// ì•¡ìí…Œë‘ë¦¬ë¡œë¶€í„° 0.1f ë„ìš°ê¸° ì¦‰, wallì—ì„œ 0.2 ë„ì›€
 	glTexCoord2f(1.0f, 0.51f); glVertex3f(0.98f, -0.5f, -0.9f);
 	glTexCoord2f(1.0f, 1.0f); glVertex3f(0.98f, 0.5f, -0.9f);
 	glTexCoord2f(0.51f, 1.0f); glVertex3f(0.98f, 0.5f, 0.9f);
@@ -129,12 +129,12 @@ AUX_RGBImageRec * LoadBMP(char *Filename) {
 	File = fopen(Filename, "r");
 	if (File) {
 		fclose(File);
-		return auxDIBImageLoad(Filename);	     // ÆÄÀÏ·ÎºÎÅÍ ¸Ş¸ğ¸®·Î
+		return auxDIBImageLoad(Filename);	     // íŒŒì¼ë¡œë¶€í„° ë©”ëª¨ë¦¬ë¡œ
 	}
 	return NULL;
 }
 
-int LoadGLTextures() {                                   // ÆÄÀÏÀ» ·ÎµåÇÏ°í ÅØ½ºÃÄ·Î º¯È¯
+int LoadGLTextures() {                                   // íŒŒì¼ì„ ë¡œë“œí•˜ê³  í…ìŠ¤ì³ë¡œ ë³€í™˜
 	int Status = TRUE, i;
 	AUX_RGBImageRec *TextureImage;
 
