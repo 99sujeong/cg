@@ -1,11 +1,11 @@
 #include <windows.h>          
 #include <stdio.h>    
 #include <math.h>            
-#include <GL\glaux.h>   // GL ∆˙¥ı √ﬂ∞°, √ﬂ∞° ¡æº”º∫ø° glaux.lib √ﬂ∞°
+#include <GL\glaux.h>   // GL Ìè¥Îçî Ï∂îÍ∞Ä, Ï∂îÍ∞Ä Ï¢ÖÏÜçÏÑ±Ïóê glaux.lib Ï∂îÍ∞Ä
 #include <GL\glut.h>                     
 #include <GL\glu.h>
-// √ﬂ∞° ¡æº”º∫ø° legacy_stdio_definitions.lib
-// º”º∫ -> C/C++ -> ¿¸√≥∏Æ±‚ -> ¿¸√≥∏Æ±‚ ¡§¿« : _CRT_SECURE_NO_WARNINGS √ﬂ∞°
+// Ï∂îÍ∞Ä Ï¢ÖÏÜçÏÑ±Ïóê legacy_stdio_definitions.lib
+// ÏÜçÏÑ± -> C/C++ -> Ï†ÑÏ≤òÎ¶¨Í∏∞ -> Ï†ÑÏ≤òÎ¶¨Í∏∞ Ï†ïÏùò : _CRT_SECURE_NO_WARNINGS Ï∂îÍ∞Ä
 
 #define MAX_PARTICLES   1000                   
 float slowdown = 2.0f, xspeed, yspeed, zoom = -40.0f;
@@ -95,7 +95,7 @@ int InitGL(GLvoid) {
         particle[loop].xi = float((rand() % 50) - 26.0f);
         particle[loop].yi = float((rand() % 50) - 25.0f);
         particle[loop].zi = float((rand() % 50) - 25.0f);
-        particle[loop].xg = 0.0f;   // ∫“ πÊ«‚ : ¿ß(y√‡)∑Œ «‚«‘
+        particle[loop].xg = 0.0f;   // Î∂à Î∞©Ìñ• : ÏúÑ(yÏ∂ï)Î°ú Ìñ•Ìï®
         particle[loop].yg = 0.6f;
         particle[loop].zg = 0.0f;
     }
