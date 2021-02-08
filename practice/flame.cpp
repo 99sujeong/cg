@@ -1,12 +1,12 @@
 #include <windows.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <GL\glu.h>	// GL Æú´õ Ãß°¡, Ãß°¡ Á¾¼Ó¼º¿¡ glaux.lib Ãß°¡
+#include <GL\glu.h>	// GL í´ë” ì¶”ê°€, ì¶”ê°€ ì¢…ì†ì„±ì— glaux.lib ì¶”ê°€
 #include <GL\glut.h>
 #include <GL\glaux.h>
-// ¼Ó¼º -> °í±Ş -> ¹®ÀÚÁıÇÕ -> ¸ÖÆ¼¹ÙÀÌÆ® ¹®ÀÚÁıÇÕ
-// Ãß°¡ Á¾¼Ó¼º¿¡ legacy_stdio_definitions.lib
-// ¼Ó¼º -> C/C++ -> ÀüÃ³¸®±â -> ÀüÃ³¸®±â Á¤ÀÇ : _CRT_SECURE_NO_WARNINGS Ãß°¡
+// ì†ì„± -> ê³ ê¸‰ -> ë¬¸ìì§‘í•© -> ë©€í‹°ë°”ì´íŠ¸ ë¬¸ìì§‘í•©
+// ì¶”ê°€ ì¢…ì†ì„±ì— legacy_stdio_definitions.lib
+// ì†ì„± -> C/C++ -> ì „ì²˜ë¦¬ê¸° -> ì „ì²˜ë¦¬ê¸° ì •ì˜ : _CRT_SECURE_NO_WARNINGS ì¶”ê°€
 
 #define	MAX_PARTICLES	1000		// Number Of Particles To Create
 
