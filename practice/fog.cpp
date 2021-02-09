@@ -20,7 +20,7 @@ static bool bMousing;
 void MyInit() {
     GLfloat position[] = { 0.5, 0.5, 3.0, 0.0 };
     glEnable(GL_DEPTH_TEST);
-    glLightfv(GL_LIGHT0, GL_POSITION, position);
+    glLightfv(GL_LIGHT0, GL_POSITION, position); 
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     {
