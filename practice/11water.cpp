@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include <GL\glaux.h> // GL Æú´õ Ãß°¡, Ãß°¡ Á¾¼Ó¼º¿¡ glaux.lib Ãß°¡
+#include <GL\glaux.h> // GL í´ë” ì¶”ê°€, ì¶”ê°€ ì¢…ì†ì„±ì— glaux.lib ì¶”ê°€
 #include <GL\glut.h>
 #include <GL\glu.h>
-// Ãß°¡ Á¾¼Ó¼º¿¡ legacy_stdio_definitions.lib
-// ¼Ó¼º -> °í±Ş -> ¹®ÀÚÁıÇÕ -> ¸ÖÆ¼¹ÙÀÌÆ® ¹®ÀÚÁıÇÕ
-// ¼Ó¼º -> C/C++ -> ÀüÃ³¸®±â -> ÀüÃ³¸®±â Á¤ÀÇ : _CRT_SECURE_NO_WARNINGS Ãß°¡
+// ì¶”ê°€ ì¢…ì†ì„±ì— legacy_stdio_definitions.lib
+// ì†ì„± -> ê³ ê¸‰ -> ë¬¸ìì§‘í•© -> ë©€í‹°ë°”ì´íŠ¸ ë¬¸ìì§‘í•©
+// ì†ì„± -> C/C++ -> ì „ì²˜ë¦¬ê¸° -> ì „ì²˜ë¦¬ê¸° ì •ì˜ : _CRT_SECURE_NO_WARNINGS ì¶”ê°€
 
 #define DIMX 64
 #define DIMZ 128
