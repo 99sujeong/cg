@@ -4,11 +4,11 @@
 #include <olectl.h>
 #include <math.h>
 #include <time.h>   
-#include <GL\glaux.h>		// GL Æú´õ Ãß°¡, Ãß°¡ Á¾¼Ó¼º¿¡ glaux.lib Ãß°¡
+#include <GL\glaux.h>		// GL í´ë” ì¶”ê°€, ì¶”ê°€ ì¢…ì†ì„±ì— glaux.lib ì¶”ê°€
 #include <GL\glut.h>	
 #include <GL\glu.h>	
-// Ãß°¡ Á¾¼Ó¼º¿¡ legacy_stdio_definitions.lib
-// ¼Ó¼º -> °í±Ş -> ¹®ÀÚÁıÇÕ -> ¸ÖÆ¼¹ÙÀÌÆ® ¹®ÀÚÁıÇÕ
+// ì¶”ê°€ ì¢…ì†ì„±ì— legacy_stdio_definitions.lib
+// ì†ì„± -> ê³ ê¸‰ -> ë¬¸ìì§‘í•© -> ë©€í‹°ë°”ì´íŠ¸ ë¬¸ìì§‘í•©
 
 #define MAX_PARTICLES		1000    
 #define MAX_TAIL			100  
@@ -158,7 +158,7 @@ void DrawParticle(void) {
 
 		particle[loop][0].life -= particle[loop][0].fade;
 
-		if (particle[loop][TailLen].y < -18) {             // ÆøÆ÷¼ö°¡ ¼ö¸é¿¡ µµÂøÇÏ´Â ¼ø°£
+		if (particle[loop][TailLen].y < -18) {             // í­í¬ìˆ˜ê°€ ìˆ˜ë©´ì— ë„ì°©í•˜ëŠ” ìˆœê°„
 			particle[loop][TailLen].xSpeed = rand() % 2 + 1;
 			particle[loop][TailLen].ySpeed = rand() % 2 + 8;
 			particle[loop][TailLen].zSpeed = rand() % 2 + 2;
